@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model upload.Models.Book
+
+@{
+    ViewData["Title"] = "Create New Book";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Create New Book</h2>
+
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="Title">Title</label>
+            <input type="text" class="form-control" id="Title" asp-for="Title" placeholder="Enter book title" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Author">Author</label>
+            <input type="text" class="form-control" id="Author" asp-for="Author" placeholder="Enter author's name" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <textarea class="form-control" id="Description" asp-for="Description" rows="4" placeholder="Enter book description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="Price">Price</label>
+            <input type="number" class="form-control" id="Price" asp-for="Price" placeholder="Enter book price" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Image">Image</label>
+            <input type="file" class="form-control-file" id="Image" asp-for="Image" />
+            <small class="form-text text-muted">Upload book cover image (optional)</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Save</button>
+    </form>
+</div>
+

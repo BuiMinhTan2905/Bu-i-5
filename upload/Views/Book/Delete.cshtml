@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Book
+
+<h2>Are you sure you want to delete this book?</h2>
+
+<div>
+    <strong>@Model.Title</strong>
+    <p>By: @Model.Author</p>
+    <p>Price: @Model.Price</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Yes, Delete</button>
+    <a href="@Url.Action("Index", "Book")">Cancel</a>
+</form>

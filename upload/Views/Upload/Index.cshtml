@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewData["Title"] = "Upload File";
+}
+
+<h2>Upload File</h2>
+
+<form action="/Upload/Index" method="post" enctype="multipart/form-data">
+    <label for="file">Choose a file:</label>
+    <input type="file" name="file" id="file" required />
+    <button type="submit">Upload</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <p style="color: @(ViewBag.Message.Contains("successfully") ? "green" : "red")">
+        @ViewBag.Message
+    </p>
+}
+
+@if (ViewBag.FilePath != null)
+{
+    <h3>Uploaded Image:</h3>
+    <img src="@ViewBag.FilePath" alt="Uploaded File" style="max-width: 500px; max-height: 500px;" />
+}
+

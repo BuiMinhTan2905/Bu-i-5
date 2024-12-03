@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<Book>
+
+<h2>Danh sách sách</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Description</th> <!-- Cột Description -->
+            <th>Image</th> <!-- Cột Image -->
+            <th>Price</th> <!-- Cột Price -->
+            <th>Actions</th> <!-- Cột Actions -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+
+                <!-- Hiển thị mô tả -->
+                <td>@book.Description</td>
+
+                <!-- Hiển thị hình ảnh -->
+                <td>
+                    @if (!string.IsNullOrEmpty(book.Image))
+                    {
+                        <img src="@book.Image" alt="@book.Title" style="max-width: 100px; height: auto;" />
+                    }
+                    else
+                    {
+                        <img src="~/images/default-book-image.jpg" alt="No Image" style="max-width: 100px; height: auto;" />
+                    }
+                </td>
+
+                <td>@book.Price</td> <!-- Hiển thị giá -->
+
+                <td>
+                    <a href="@Url.Action("Details", "Book", new { id = book.Id })">Details</a> |
+                    <a href="@Url.Action("Edit", "Book", new { id = book.Id })">Edit</a> |
+                    <a href="@Url.Action("Delete", "Book", new { id = book.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("Create", "Book")">Add New Book</a>
+
+
+
